@@ -1,7 +1,7 @@
 package org.example;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 
 public class App {
@@ -12,9 +12,9 @@ public class App {
         this.name = name;
     }
 
-    public static ThreadPoolExecutor fixedThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+    public static ThreadPoolExecutor fixedThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
 
-    public void F1(){
+    public void F1 () {
         System.out.println("Start  F1 " + name);
         fixedThreadPool.submit(() -> {
             F2();
@@ -22,7 +22,7 @@ public class App {
         System.out.println("Finish F1 " + name);
     }
 
-    public void F2(){
+    public void F2 () {
         System.out.println("Start  F2 " + name);
         fixedThreadPool.submit(() -> {
             F3();
@@ -30,7 +30,7 @@ public class App {
         System.out.println("Finish F2 " + name);
     }
 
-    public void F3(){
+    public void F3 () {
         System.out.println("Start  F3 " + name);
         try {
             Thread.sleep(1000);
@@ -42,14 +42,14 @@ public class App {
     }
 
 
-    public static void main(String[] args) {
-        App app=new App("th#1");
-        System.out.println("Start main");
+    public static void main (String[] args) {
+        App app = new App("th#1");
+        System.out.println("Start main simpleThread");
         fixedThreadPool.submit(() -> {
             app.F1();
         });
 
-        App app2=new App("th#2");
+        App app2 = new App("th#2");
         fixedThreadPool.submit(() -> {
             app2.F1();
         });
@@ -60,7 +60,9 @@ public class App {
             throw new RuntimeException(e);
         }
         fixedThreadPool.shutdown();
-        System.out.println("Finish main");
+        System.out.println("Finish main simpleThread");
+
 
     }
+
 }
