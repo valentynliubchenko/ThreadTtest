@@ -17,11 +17,22 @@ public class App {
     public void F1 () {
         System.out.println("Start  F1 " + name);
         fixedThreadPool.submit(() -> {
+            F11();
             F2();
         });
         System.out.println("Finish F1 " + name);
     }
 
+    public void F11 () {
+        System.out.println("Start  F11 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Finish F11 " + name);
+    }
     public void F2 () {
         System.out.println("Start  F2 " + name);
         fixedThreadPool.submit(() -> {

@@ -12,6 +12,12 @@ public class AppSchedule {
 
     public void F1 () {
         System.out.println("Start  F1 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         fixedThreadPoolScheduled.submit(() -> {
             F2();
         });
@@ -19,6 +25,12 @@ public class AppSchedule {
     }
 
     public void F2 () {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         System.out.println("Start  F2 " + name);
         fixedThreadPoolScheduled.schedule(() -> {
             F3();
@@ -28,6 +40,11 @@ public class AppSchedule {
 
     public void F3 () {
         System.out.println("Start  F3 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("Finish F3 " + name);
     }
@@ -50,7 +67,7 @@ public class AppSchedule {
         });
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
