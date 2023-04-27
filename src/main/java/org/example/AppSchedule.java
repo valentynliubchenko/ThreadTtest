@@ -78,7 +78,7 @@ public class AppSchedule {
             throw new RuntimeException(e);
         }
         System.out.println("Finish main sheduleThread");
-
     }
+
 
 }
