@@ -35,9 +35,9 @@ public class AppSimpleThread {
     }
 
     public void F3 () {
-     //   System.out.println("Start  F3 " + name + " fixedThreadPool " + fixedThreadPool);
+        System.out.println("Start  F3 " + name + " fixedThreadPool " + fixedThreadPool);
         isFinished.set( true);
-       // System.out.println("Finish F3 " + name + " fixedThreadPool " + fixedThreadPool + "isfinish " + isFinished.get());
+        System.out.println("Finish F3 " + name + " fixedThreadPool " + fixedThreadPool + "isfinish " + isFinished.get());
     }
 
 
@@ -50,9 +50,12 @@ public class AppSimpleThread {
         while (!app.isFinished.get()){
         }
         System.out.println("after while isFinish " + app.isFinished.get());
-//        fixedThreadPool.shutdown();
+        fixedThreadPool.shutdown();
+        while (!fixedThreadPool.isTerminated()){
+        }
+
 //        try {
-//            fixedThreadPool.awaitTermination(60, TimeUnit.SECONDS);
+ //           fixedThreadPool.awaitTermination(60, TimeUnit.SECONDS);
 //        } catch (InterruptedException e) {
 //            throw new RuntimeException(e);
 //        }
