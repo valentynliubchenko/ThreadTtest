@@ -12,12 +12,24 @@ public class App {
         this.name = name;
     }
 
-    public static ThreadPoolExecutor fixedThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+    public static ThreadPoolExecutor fixedThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
     public void F1 () {
         System.out.println("Start  F1 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         fixedThreadPool.submit(() -> {
             F11();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
             F2();
         });
         System.out.println("Finish F1 " + name);
@@ -35,6 +47,12 @@ public class App {
     }
     public void F2 () {
         System.out.println("Start  F2 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         fixedThreadPool.submit(() -> {
             F3();
         });
@@ -43,6 +61,12 @@ public class App {
 
     public void F3 () {
         System.out.println("Start  F3 " + name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -66,7 +90,7 @@ public class App {
         });
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(13000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
