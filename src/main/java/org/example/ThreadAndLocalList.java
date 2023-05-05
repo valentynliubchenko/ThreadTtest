@@ -62,7 +62,7 @@ public class ThreadAndLocalList {
         System.out.println(listIterator.next());
 
         isFinished.set(true);
-        System.out.println("Finish F3 " + name + " fixedThreadPool " + fixedThreadPool + "isfinish " + isFinished.get());
+        System.out.println("Finish F4 " + name + " fixedThreadPool " + fixedThreadPool + "isfinish " + isFinished.get());
     }
 
 
